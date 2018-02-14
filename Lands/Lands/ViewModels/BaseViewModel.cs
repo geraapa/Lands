@@ -14,7 +14,7 @@
         {
             PropertyChanged?.Invoke(
                         this,
-                        new PropertyChangedEventArgs(nameof(propertyName)));
+                        new PropertyChangedEventArgs(propertyName));
         }
 
         protected void SetValue<T>(ref T backingField, T value, [CallerMemberName] string propertyName = null)
