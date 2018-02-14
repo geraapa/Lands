@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Lands.ViewModels
+﻿namespace Lands.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     class MainViewModel
     {
         #region ViewModels
