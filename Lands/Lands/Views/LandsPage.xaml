@@ -10,7 +10,6 @@
             BindingContext="{Binding Lands}"
             Padding="20">
             <Label 
-                FontSize="Large"
                 Text="País"
                 TextColor="#523829">
             </Label>
@@ -18,11 +17,20 @@
                 ItemDisplayBinding="{Binding Name}"
                 ItemsSource="{Binding Lands}"
                 SelectedItem="{Binding TargetLand, Mode=TwoWay}"
-                Title="Selecciona un país"
-                TextColor="#523829">
+                Title="Selecciona un país">
             </Picker>
+            <Button
+                BackgroundColor="#EE9C2A"
+                BorderRadius="23"
+                Command="{Binding SearchCommand}"
+                HeightRequest="46"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                Text="Buscar"
+                TextColor="White">
+            </Button>
             <ActivityIndicator
-                IsRunning="{Binding IsRunning, Mode=TwoWay}">                
+                IsRunning="{Binding IsRunning, Mode=TwoWay}">
             </ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>

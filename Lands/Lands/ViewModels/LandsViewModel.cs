@@ -1,11 +1,13 @@
 ﻿namespace Lands.ViewModels
 {
+    using GalaSoft.MvvmLight.Command;
     using Models;
     using Services;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Text;
+    using System.Windows.Input;
     using Xamarin.Forms;
 
     class LandsViewModel : BaseViewModel
@@ -18,6 +20,7 @@
         private ObservableCollection<Land> lands;
         private string targetLand;
         private bool isRunning;
+        private bool isEnabled;
         #endregion
 
         #region Propierties
@@ -45,6 +48,18 @@
             }
         }
 
+        public bool IsEnabled
+        {
+            get
+            {
+                return this.isEnabled;
+            }
+            set
+            {
+                SetValue(ref this.isEnabled, value);
+            }
+        }
+
         public string TargetLand
         {
             get
@@ -61,8 +76,35 @@
         #region Contructors
         public LandsViewModel()
         {
+            this.IsRunning = false;
+            this.IsEnabled = true;
             this.apiService = new ApiService();
             this.LoadLans();
+        }
+        #endregion
+
+        #region Commands
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new RelayCommand(Search);
+            }
+        }
+
+        private async void Search()
+        {
+            if (string.IsNullOrEmpty(this.TargetLand))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "You must enter an land.",
+                    "Accept");
+                return;
+            }            
+
+            this.IsRunning = true;
+            this.IsEnabled = false;            
         }
         #endregion
 
