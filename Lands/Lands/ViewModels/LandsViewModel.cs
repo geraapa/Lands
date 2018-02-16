@@ -11,11 +11,13 @@
     class LandsViewModel : BaseViewModel
     {
         #region Services
-        private ApiService apiService;             
+        private ApiService apiService;
         #endregion
 
         #region Attributes
         private ObservableCollection<Land> lands;
+        private string targetLand;
+        private bool isRunning;
         #endregion
 
         #region Propierties
@@ -28,6 +30,30 @@
             set
             {
                 SetValue(ref this.lands, value);
+            }
+        }
+
+        public bool IsRunning
+        {
+            get
+            {
+                return this.isRunning;
+            }
+            set
+            {
+                SetValue(ref this.isRunning, value);
+            }
+        }
+
+        public string TargetLand
+        {
+            get
+            {
+                return this.targetLand;
+            }
+            set
+            {
+                SetValue(ref this.targetLand, value);
             }
         }
         #endregion

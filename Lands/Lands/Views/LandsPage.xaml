@@ -2,16 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lands.Views.LandsPage"
+             BackgroundColor="#FCE8AC"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Lands">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Lands}"
-            Padding="5">
+            Padding="20">
             <Label 
                 FontSize="Large"
-                Text="Lands Page">                
+                Text="País"
+                TextColor="#523829">
             </Label>
+            <Picker
+                ItemDisplayBinding="{Binding Name}"
+                ItemsSource="{Binding Lands}"
+                SelectedItem="{Binding TargetLand, Mode=TwoWay}"
+                Title="Selecciona un país"
+                TextColor="#523829">
+            </Picker>
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning, Mode=TwoWay}">                
+            </ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
