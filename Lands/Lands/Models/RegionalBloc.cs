@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class RegionalBloc
+    public class RegionalBloc
     {
         [JsonProperty(PropertyName = "acronym")]
         public string Acronym { get; set; }

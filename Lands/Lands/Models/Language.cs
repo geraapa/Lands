@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class Language
+    public class Language
     {
         [JsonProperty(PropertyName = "iso639_1")]
         public string Iso6391 { get; set; }

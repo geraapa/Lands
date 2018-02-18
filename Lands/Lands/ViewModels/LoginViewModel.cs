@@ -9,7 +9,7 @@
     using Views;
     using Xamarin.Forms;
 
-    class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
         #region Attributes
         private string email;

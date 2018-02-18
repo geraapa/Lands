@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class TokenResponse
+    public class TokenResponse
     {
         #region Propierties
         [JsonProperty(PropertyName = "access_token")]

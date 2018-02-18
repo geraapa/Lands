@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class Currency
+    public class Currency
     {
         [JsonProperty(PropertyName = "code")]
         public string Code { get; set; }

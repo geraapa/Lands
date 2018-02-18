@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class Translations
+    public class Translations
     {
         [JsonProperty(PropertyName = "de")]
         public string Germany { get; set; }

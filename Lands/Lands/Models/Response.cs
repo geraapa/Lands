@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class Response
+    public class Response
     {
         public bool IsSuccess
         {

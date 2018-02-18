@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    class Land
+    public class Land
     {
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
