@@ -2,36 +2,64 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lands.Views.LandsPage"
-             BackgroundColor="#FCE8AC"
+             BackgroundColor="Silver"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Lands">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Lands}"
-            Padding="20">
-            <Label 
-                Text="País"
-                TextColor="#523829">
-            </Label>
-            <Picker
-                ItemDisplayBinding="{Binding Name}"
+            Padding="5">
+            <SearchBar
+                BackgroundColor="Silver"
+                Text="{Binding Filter, Mode=TwoWay}"
+                Placeholder="Search ..."
+                SearchCommand="{Binding SearchCommand}">                
+            </SearchBar>
+            <ListView
+                BackgroundColor="Silver"
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
                 ItemsSource="{Binding Lands}"
-                SelectedItem="{Binding TargetLand, Mode=TwoWay}"
-                Title="Selecciona un país">
-            </Picker>
-            <Button
-                BackgroundColor="#EE9C2A"
-                BorderRadius="23"
-                Command="{Binding SearchCommand}"
-                HeightRequest="46"
-                HorizontalOptions="FillAndExpand"
-                IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
-                Text="Buscar"
-                TextColor="White">
-            </Button>
-            <ActivityIndicator
-                IsRunning="{Binding IsRunning, Mode=TwoWay}">
-            </ActivityIndicator>
-        </StackLayout>
+                RefreshCommand="{Binding RefreshCommand}"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding Name}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding Capital}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </StackLayout>
+                                    <Image
+                                        Grid.Column="1"
+                                        HorizontalOptions="End"
+                                        Source="ic_chevron_right">
+                                    </Image>
+                                </Grid>
+                            </Frame>                                
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>        
     </ContentPage.Content>
 </ContentPage>

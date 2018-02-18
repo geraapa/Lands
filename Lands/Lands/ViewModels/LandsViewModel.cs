@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Text;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -18,9 +19,9 @@
 
         #region Attributes
         private ObservableCollection<Land> lands;
-        private string targetLand;
-        private bool isRunning;
-        private bool isEnabled;
+        private bool isRefreshing;
+        private string filter;
+        private List<Land> landList;
         #endregion
 
         #region Propierties
@@ -36,39 +37,28 @@
             }
         }
 
-        public bool IsRunning
+        public bool IsRefreshing
         {
             get
             {
-                return this.isRunning;
+                return this.isRefreshing;
             }
             set
             {
-                SetValue(ref this.isRunning, value);
+                SetValue(ref this.isRefreshing, value);
             }
         }
 
-        public bool IsEnabled
+        public string Filter
         {
             get
             {
-                return this.isEnabled;
+                return this.filter;
             }
             set
             {
-                SetValue(ref this.isEnabled, value);
-            }
-        }
-
-        public string TargetLand
-        {
-            get
-            {
-                return this.targetLand;
-            }
-            set
-            {
-                SetValue(ref this.targetLand, value);
+                SetValue(ref this.filter, value);
+                this.Search();
             }
         }
         #endregion
@@ -76,14 +66,20 @@
         #region Contructors
         public LandsViewModel()
         {
-            this.IsRunning = false;
-            this.IsEnabled = true;
             this.apiService = new ApiService();
             this.LoadLans();
         }
         #endregion
 
         #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadLans);
+            }
+        }
+
         public ICommand SearchCommand
         {
             get
@@ -91,26 +87,13 @@
                 return new RelayCommand(Search);
             }
         }
-
-        private async void Search()
-        {
-            if (string.IsNullOrEmpty(this.TargetLand))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter an land.",
-                    "Accept");
-                return;
-            }            
-
-            this.IsRunning = true;
-            this.IsEnabled = false;            
-        }
         #endregion
 
         #region Methods
         private async void LoadLans()
         {
+            this.IsRefreshing = true;
+
             var connection = await this.apiService.CheckConnection();
 
             if(!connection.IsSuccess)
@@ -120,6 +103,7 @@
                    connection.Message,
                    "Accept");
                 await Application.Current.MainPage.Navigation.PopAsync();
+                this.IsRefreshing = false;
                 return;
             }
 
@@ -134,11 +118,29 @@
                     "Error", 
                     response.Message, 
                     "Accept");
+                this.IsRefreshing = false;
                 return;
             }
 
-            var list = (List<Land>)response.Result;
-            this.Lands = new ObservableCollection<Land>(list);
+            this.landList = (List<Land>)response.Result;
+            this.Lands = new ObservableCollection<Land>(this.landList);
+            this.IsRefreshing = false;
+        }
+        
+        private void Search()
+        {
+            if (string.IsNullOrEmpty(Filter))
+            {
+                this.Lands = new ObservableCollection<Land>(
+                    this.landList);
+            }
+            else
+            {
+                this.Lands = new ObservableCollection<Land>(
+                    this.landList.Where(
+                        l => l.Name.ToLower().Contains(this.Filter.ToLower()) ||
+                             l.Capital.ToLower().Contains(this.Filter.ToLower())));
+            }
         }
         #endregion
     }
