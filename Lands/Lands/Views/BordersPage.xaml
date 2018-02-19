@@ -29,8 +29,6 @@
                                 </Grid.ColumnDefinitions>
                                 <Label
                                     Grid.Column="0"
-                                    FontAttributes="Bold"
-                                    FontSize="Medium"
                                     Text="{Binding Code}"
                                     TextColor="Black">
                                 </Label>

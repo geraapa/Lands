@@ -29,12 +29,12 @@
         public string Portuguese { get; set; }
 
         [JsonProperty(PropertyName = "nl")]
-        public string German { get; set; }
+        public string Detuch { get; set; }
 
         [JsonProperty(PropertyName = "hr")]
         public string Croatian { get; set; }
 
         [JsonProperty(PropertyName = "fa")]
-        public string Danish { get; set; }
+        public string Persian { get; set; }
     }
 }

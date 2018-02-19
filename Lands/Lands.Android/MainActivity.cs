@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FFImageLoading.Forms.Droid;
 
 namespace Lands.Droid
 {
@@ -14,6 +15,7 @@ namespace Lands.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            CachedImageRenderer.Init(enableFastRenderer: true);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
