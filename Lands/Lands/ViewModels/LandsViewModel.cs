@@ -137,7 +137,7 @@
                 return;
             }
 
-            var response = await this.apiService.GetList<LandItemViewModel>(
+            var response = await this.apiService.GetList<Land>(
                 "http://restcountries.eu",
                 "/rest",
                 "/v2/all");

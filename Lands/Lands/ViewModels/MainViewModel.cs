@@ -1,10 +1,6 @@
 ﻿namespace Lands.ViewModels
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
-    class MainViewModel
+    public class MainViewModel
     {
         #region ViewModels
         public LoginViewModel Login

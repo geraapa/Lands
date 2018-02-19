@@ -7,8 +7,7 @@
              Title="Lands">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Lands}"
-            Padding="5">
+            BindingContext="{Binding Lands}">
             <SearchBar
                 BackgroundColor="Silver"
                 Text="{Binding Filter, Mode=TwoWay}"
@@ -32,7 +31,7 @@
                                 Margin="5">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer
-                                        Command="{Binding SelectLandCommand}">                                        
+                                        Command="{Binding SelectLandCommand}">
                                     </TapGestureRecognizer>
                                 </Frame.GestureRecognizers>
                                 <Grid>
