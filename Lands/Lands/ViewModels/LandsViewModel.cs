@@ -20,7 +20,6 @@
         private ObservableCollection<LandItemViewModel> lands;
         private bool isRefreshing;
         private string filter;
-        private List<Land> landList;
         #endregion
 
         #region Propierties
@@ -89,37 +88,7 @@
         #endregion
 
         #region Methods
-        private IEnumerable<LandItemViewModel> ToLandItemViewModel()
-        {
-            return this.landList.Select(l => new LandItemViewModel
-            {
-                Alpha2Code = l.Alpha2Code,
-                Alpha3Code = l.Alpha3Code,
-                AltSpellings = l.AltSpellings,
-                Area = l.Area,
-                Borders = l.Borders,
-                CallingCodes = l.CallingCodes,
-                Capital = l.Capital,
-                Cioc = l.Cioc,
-                Currencies = l.Currencies,
-                Demonym = l.Demonym,
-                Flag = l.Flag,
-                Gini = l.Gini,
-                Languages = l.Languages,
-                Latlng = l.Latlng,
-                Name = l.Name,
-                NativeName = l.NativeName,
-                NumericCode = l.NumericCode,
-                Population = l.Population,
-                Region = l.Region,
-                RegionalBlocs = l.RegionalBlocs,
-                Subregion = l.Subregion,
-                Timezones = l.Timezones,
-                TopLevelDomain = l.TopLevelDomain,
-                Translations = l.Translations
-            });
-        }
-
+        
         private async void LoadLans()
         {
             this.IsRefreshing = true;
@@ -152,7 +121,7 @@
                 return;
             }
 
-            this.landList = (List<Land>)response.Result;
+            MainViewModel.GetInstance().LandsList = (List<Land>)response.Result;
             this.Lands = new ObservableCollection<LandItemViewModel>(
                 this.ToLandItemViewModel());
             this.IsRefreshing = false;
@@ -174,6 +143,36 @@
             }
         }
 
+        private IEnumerable<LandItemViewModel> ToLandItemViewModel()
+        {
+            return MainViewModel.GetInstance().LandsList.Select(l => new LandItemViewModel
+            {
+                Alpha2Code = l.Alpha2Code,
+                Alpha3Code = l.Alpha3Code,
+                AltSpellings = l.AltSpellings,
+                Area = l.Area,
+                Borders = l.Borders,
+                CallingCodes = l.CallingCodes,
+                Capital = l.Capital,
+                Cioc = l.Cioc,
+                Currencies = l.Currencies,
+                Demonym = l.Demonym,
+                Flag = l.Flag,
+                Gini = l.Gini,
+                Languages = l.Languages,
+                Latlng = l.Latlng,
+                Name = l.Name,
+                NativeName = l.NativeName,
+                NumericCode = l.NumericCode,
+                Population = l.Population,
+                Region = l.Region,
+                RegionalBlocs = l.RegionalBlocs,
+                Subregion = l.Subregion,
+                Timezones = l.Timezones,
+                TopLevelDomain = l.TopLevelDomain,
+                Translations = l.Translations
+            });
+        }
         #endregion
     }
 }
