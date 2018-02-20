@@ -31,8 +31,6 @@
             get;
             set;
         }
-
-
         #endregion
 
         #region Constructors

@@ -130,11 +130,6 @@
         {
             this.IsRemembered = true;
             this.IsEnabled = true;
-
-            this.Email = "geraapa@gmail.com";
-            this.Password = "Hola1234.";
-
-            //http://restcountries.eu/rest/v2/all
         }
         #endregion
     }

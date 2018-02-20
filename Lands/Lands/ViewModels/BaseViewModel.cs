@@ -1,10 +1,8 @@
 ﻿namespace Lands.ViewModels
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
-    using System.Runtime.CompilerServices;
     using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
     public class BaseViewModel : INotifyPropertyChanged
     {

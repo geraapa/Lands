@@ -6,16 +6,16 @@
              Icon="ic_translate"
              Title="Translations">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
             <StackLayout
-                BindingContext="{Binding Land}"
-                Padding="5">
+            BindingContext="{Binding Land}"
+            Padding="5">
                 <Label
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    Text="{Binding Land.Name}"
-                    TextColor="Black">
+                FontSize="Large"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="{Binding Land.Name}"
+                TextColor="Black">
                 </Label>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -31,6 +31,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="0"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Germany}"
                         TextColor="Black">
                     </Label>
@@ -43,6 +44,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="1"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Spanish}"
                         TextColor="Black">
                     </Label>
@@ -55,6 +57,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="2"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.French}"
                         TextColor="Black">
                     </Label>
@@ -67,6 +70,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="3"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Japanese}"
                         TextColor="Black">
                     </Label>
@@ -79,6 +83,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="4"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Italian}"
                         TextColor="Black">
                     </Label>
@@ -91,6 +96,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="5"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Burmese}"
                         TextColor="Black">
                     </Label>
@@ -103,6 +109,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="6"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Portuguese}"
                         TextColor="Black">
                     </Label>
@@ -115,6 +122,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="7"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Detuch}"
                         TextColor="Black">
                     </Label>
@@ -127,6 +135,7 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="8"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Croatian}"
                         TextColor="Black">
                     </Label>
@@ -139,11 +148,12 @@
                     <Label
                         Grid.Column="1"
                         Grid.Row="9"
+                        FontAttributes="Bold"
                         Text="{Binding Land.Translations.Persian}"
                         TextColor="Black">
                     </Label>
                 </Grid>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>        
     </ContentPage.Content>
 </ContentPage>

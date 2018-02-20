@@ -1,8 +1,5 @@
 ﻿namespace Lands.Infrastructure
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using ViewModels;
 
     class InstanceLocator
