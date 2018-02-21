@@ -1,6 +1,7 @@
 ﻿namespace Lands.Models
 {
     using Newtonsoft.Json;
+    using SQLite;
     using System.Collections.Generic;
 
     public class Land
@@ -14,6 +15,7 @@
         [JsonProperty(PropertyName = "alpha2Code")]
         public string Alpha2Code { get; set; }
 
+        [PrimaryKey]
         [JsonProperty(PropertyName = "alpha3Code")]
         public string Alpha3Code { get; set; }
 
@@ -76,5 +78,10 @@
 
         [JsonProperty(PropertyName = "cioc")]
         public string Cioc { get; set; }
+
+        public override int GetHashCode()
+        {
+            return int.Parse(Alpha3Code);
+        }
     }
 }
