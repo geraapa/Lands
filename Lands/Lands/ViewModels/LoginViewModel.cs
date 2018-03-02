@@ -1,12 +1,17 @@
 ﻿namespace Lands.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using Services;
     using System.Windows.Input;
     using Views;
     using Xamarin.Forms;
 
     public class LoginViewModel : BaseViewModel
     {
+        #region Services
+        private ApiService apiService;
+        #endregion
+
         #region Attributes
         private string email;
         private string password;
@@ -102,6 +107,24 @@
             this.IsRunning = true;
             this.IsEnabled = false;
 
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    connection.Message,
+                    "Accept");
+                return;
+            }
+
+            var token = await this.apiService.GetToken(
+                "",
+                this.Email,
+                this.Password,);
+
             if(this.Email != "geraapa@gmail.com" || this.Password != "Hola1234.")
             {
                 this.IsRunning = false;
@@ -128,6 +151,8 @@
         #region Constructors
         public LoginViewModel()
         {
+            this.apiService = new ApiService();
+
             this.IsRemembered = true;
             this.IsEnabled = true;
         }
