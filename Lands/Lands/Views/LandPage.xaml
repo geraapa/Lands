@@ -5,6 +5,7 @@
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="Lands.Views.LandPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             NavigationPage.HasBackButton="False"
              Icon="ic_info"
              Title="Information">
     <ContentPage.Content>

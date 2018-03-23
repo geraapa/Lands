@@ -3,6 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:tabs="clr-namespace:Lands.Views"
             x:Class="Lands.Views.LandTabbedPage"
+             NavigationPage.HasBackButton="False"
             Title="Land">
     <TabbedPage.Children>
         <tabs:LandPage/>

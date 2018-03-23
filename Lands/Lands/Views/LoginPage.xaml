@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lands.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             NavigationPage.HasBackButton="False"
              Title="Login">
     <ContentPage.Content>
         <ScrollView

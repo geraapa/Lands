@@ -4,6 +4,7 @@
              x:Class="Lands.Views.LandsPage"
              BackgroundColor="Silver"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             NavigationPage.HasBackButton="False"
              Title="Lands">
     <ContentPage.Content>
         <StackLayout

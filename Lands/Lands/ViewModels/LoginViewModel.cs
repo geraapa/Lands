@@ -123,7 +123,7 @@
             var token = await this.apiService.GetToken(
                 "",
                 this.Email,
-                this.Password,);
+                this.Password);
 
             if(this.Email != "geraapa@gmail.com" || this.Password != "Hola1234.")
             {
